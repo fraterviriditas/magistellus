@@ -1,0 +1,11 @@
+language: node_js
+script:
+  npm install
+
+deploy:
+  provider: lambda
+  function_name: "magistellusFunction"
+  region: "us-east-1"
+  role: "arn:aws:iam::030457898068:role/service-role/magistellusRole"
+  runtime: "nodejs6.10"
+  handler_name: "handler"
