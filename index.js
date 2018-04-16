@@ -10,6 +10,7 @@
 
 'use strict';
 const Alexa = require('alexa-sdk');
+const MagistellusService = require('magistellus-service');
 
 //=========================================================================================================================================
 //TODO: The items below this comment need your attention.
@@ -53,40 +54,18 @@ const handlers = {
         this.emit('GetNewFactIntent');
     },
     'ALIntent': function () {
-        // var date = new Date();
-        // var current_year = date.getYear();
-        // const speechOutput = `The current date in the anno lucis format is A L`;
-
-        // this.response.cardRenderer(SKILL_NAME, randomFact);
-        // this.response.speak(speechOutput);
-        // this.emit(':responseReady');
-        
-        // this.response.speak(STOP_MESSAGE);
-        // this.emit(':responseReady');
-        this.response.speak(STOP_MESSAGE);
+        const result = MagistellusService.getDateAL();
+        this.response.speak(result);
         this.emit(':responseReady');
     },
     'PlanetaryDayIntent': function () {
-        const date = new Date();
-        const day = date.getDay();
-        let planet = undefined;
-        switch(day){
-            case 0: planet = 'The Sun';
-                    break;
-            case 1: planet = 'The Moon';
-                    break;
-            case 2: planet = 'Mars';
-                    break;
-            case 3: planet = 'Mercury';
-                    break;
-            case 4: planet = 'Jupiter';
-                    break;
-            case 5: planet = 'Venus';
-                    break;
-            case 6: planet = 'Saturn';
-                    break;
-        }
-        this.response.speak(`The classical planet corresponding to today is ${planet}`);
+        const result = MagistellusService.getPlanetaryDay();
+        this.response.speak(result);
+        this.emit(':responseReady');
+    },
+    'PlanetaryHourIntent': function () {
+        const result = MagistellusService.getPlanetaryHour();
+        this.response.speak(result);
         this.emit(':responseReady');
     },
     'AMAZON.HelpIntent': function () {
