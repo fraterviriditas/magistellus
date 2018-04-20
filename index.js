@@ -10,7 +10,7 @@
 
 'use strict';
 const Alexa = require('alexa-sdk');
-const MagistellusService = require('magistellus-service');
+const MagistellusService = require('./src/magistellus-service');
 
 //=========================================================================================================================================
 //TODO: The items below this comment need your attention.
@@ -53,18 +53,18 @@ const handlers = {
     'LaunchRequest': function () {
         this.emit('GetNewFactIntent');
     },
-    'ALIntent': function () {
-        const result = MagistellusService.getDateAL();
-        this.response.speak(result);
-        this.emit(':responseReady');
-    },
     'PlanetaryDayIntent': function () {
-        const result = MagistellusService.getPlanetaryDay();
+        const magistellusSerivce = new MagistellusService();
+        const result = magistellusService.getPlanetaryDay();
         this.response.speak(result);
         this.emit(':responseReady');
     },
     'PlanetaryHourIntent': function () {
-        const result = MagistellusService.getPlanetaryHour();
+        const magistellusSerivce = new MagistellusService();
+        const lat = 52.630886;
+        const long = 1.297355;
+        const date = new Date();
+        const result = magistellusService.getPlanetaryHour(date, lat, long);
         this.response.speak(result);
         this.emit(':responseReady');
     },

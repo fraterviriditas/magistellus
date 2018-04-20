@@ -1,7 +1,7 @@
 class PlanetaryDayRepository {
 
     getPlanetaryDay(dayNumber) {
-        const planet;
+        let planet = '';
         switch(dayNumber){
             case 0: planet = 'The Sun';
                     break;
@@ -21,3 +21,5 @@ class PlanetaryDayRepository {
         return planet;
     }
 }
+
+module.exports = PlanetaryDayRepository;

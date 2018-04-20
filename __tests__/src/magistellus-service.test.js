@@ -1,21 +1,19 @@
 const MagistellusService = require('./../../src/magistellus-service');
 
-describe('getPlanetaryDay', () => {
+describe.only('getPlanetaryDay', () => {
     test('test', () => {
-        const result = MagistellusService.getPlanetaryDay();
+        const magistellusService = new MagistellusService();
+        const result = magistellusService.getPlanetaryDay();
         expect(result).toBe(`The classical planet corresponding to today is The Moon`);
     });
 });
 
-describe.only('getPlanetaryHour', () => {
+describe('getPlanetaryHour', () => {
     test('test', () => {
-        MagistellusService.getPlanetaryHour();
-    });
-});
-
-describe('getDateAL', () => {
-    test('test', () => {
-        const result = MagistellusService.getDateAL();
-        expect(result).toBe(`The Anno Lucis year for today is 6018`);
+        const lat = 52.630886;
+        const long = 1.297355;
+        const date = new Date();
+        const magistellusService = new MagistellusService();
+        magistellusService.getPlanetaryHour(date, lat, long);
     });
 });

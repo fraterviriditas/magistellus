@@ -5,8 +5,10 @@ class PlanetaryDayService {
         const self = this;
         self.planetaryDayRepository = new PlanetaryDayRepository();
     }
-    getPlanetgetPlanetaryDay(dayNumber) {
+    getPlanetaryDay(dayNumber) {
         const self = this;
-        self.planetaryDayRepository.getPlanetgetPlanetaryDay(dayNumber);
+        self.planetaryDayRepository.getPlanetaryDay(dayNumber);
     }
 }
+
+module.exports = PlanetaryDayService;
