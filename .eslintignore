@@ -1,0 +1,11 @@
+# Configuration files for VS Code
+.vscode/*
+
+# Code Coverage Files
+coverage/*
+
+# JS Docs
+docs/*
+
+# Node Modules
+node_modules/*
