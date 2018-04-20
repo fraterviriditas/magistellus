@@ -51,7 +51,8 @@ const data = [
 
 const handlers = {
     'LaunchRequest': function () {
-        this.emit('GetNewFactIntent');
+        this.response.speak('Welcome to Magistellus');
+        this.emit(':responseReady');
     },
     'PlanetaryDayIntent': function () {
         const magistellusSerivce = new MagistellusService();
@@ -60,7 +61,7 @@ const handlers = {
         this.emit(':responseReady');
     },
     'PlanetaryHourIntent': function () {
-        const magistellusSerivce = new MagistellusService();
+        const magistellusService = new MagistellusService();
         const lat = 52.630886;
         const long = 1.297355;
         const date = new Date();
@@ -83,6 +84,10 @@ const handlers = {
         this.response.speak(STOP_MESSAGE);
         this.emit(':responseReady');
     },
+    'Unhandled': function () {
+        this.response.speak('I did not understand your request.');
+        this.emit(':responseReady');
+    }
 };
 
 exports.handler = function (event, context, callback) {
