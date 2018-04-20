@@ -1,27 +1,19 @@
-var SolarCalc = require('solar-calc');
+const SolarCalc = require('solar-calc');
+const PlanetaryDayService = require('./planetary-day-service');
 
 class MagistellusService {
 
+    constructor() {
+        const self = this;
+        self.planetaryDayService = new PlanetaryDayService();
+    }
+
     static getPlanetaryDay() {
+        const self = this;
         const date = new Date();
-        const day = date.getDay();
-        let planet = undefined;
-        switch(day){
-            case 0: planet = 'The Sun';
-                    break;
-            case 1: planet = 'The Moon';
-                    break;
-            case 2: planet = 'Mars';
-                    break;
-            case 3: planet = 'Mercury';
-                    break;
-            case 4: planet = 'Jupiter';
-                    break;
-            case 5: planet = 'Venus';
-                    break;
-            case 6: planet = 'Saturn';
-                    break;
-        }
+        const dayNumber = date.getDay();
+        const planet = self.planetaryDayService.getPlanetaryDay(dayNumber);
+
         return `The classical planet corresponding to today is ${planet}`;
     };
 
