@@ -7,7 +7,7 @@ class PlanetaryDayService {
   }
   getPlanetaryDay(dayNumber) {
     const self = this;
-    self.planetaryDayRepository.getPlanetaryDay(dayNumber);
+    return self.planetaryDayRepository.getPlanetaryDay(dayNumber);
   }
 }
 
