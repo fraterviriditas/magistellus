@@ -8,9 +8,8 @@ class MagistellusService {
     self.planetaryHourService = new PlanetaryHourService();
   }
 
-  getPlanetaryDay() {
+  getPlanetaryDay(date) {
     const self = this;
-    const date = new Date();
     const dayNumber = date.getDay();
     const planet = self.planetaryDayService.getPlanetaryDay(dayNumber);
     return `The classical planet corresponding to today is ${planet}`;

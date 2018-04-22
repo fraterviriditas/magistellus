@@ -9,7 +9,6 @@
  * */
 
 
-
 const Alexa = require('alexa-sdk');
 const MagistellusService = require('./src/magistellus-service');
 
@@ -56,10 +55,17 @@ const handlers = {
     this.emit(':responseReady');
   },
   'PlanetaryDayIntent': function () {
-    const magistellusService = new MagistellusService();
-    const result = magistellusService.getPlanetaryDay();
-    this.response.speak(result);
-    this.emit(':responseReady');
+    const itemSlot = this.event.request.intent.slots.Item;
+    if (itemSlot && itemSlot.value) {
+      const date = new Date(itemSlot.value);
+      const magistellusService = new MagistellusService();
+      const result = magistellusService.getPlanetaryDay(date);
+      this.response.speak(result);
+      this.emit(':responseReady');
+    } else {
+      this.response.speak('Please specify a date to calculate the planetary hour for.');
+      this.emit(':responseReady');
+    }
   },
   'PlanetaryHourIntent': function () {
     const magistellusService = new MagistellusService();
