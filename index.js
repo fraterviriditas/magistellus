@@ -55,7 +55,7 @@ const handlers = {
     this.emit(':responseReady');
   },
   'PlanetaryDayIntent': function () {
-    const itemSlot = this.event.request.intent.slots.Item;
+    const itemSlot = this.event.request.intent.slots.Date;
     if (itemSlot && itemSlot.value) {
       const date = new Date(itemSlot.value);
       const magistellusService = new MagistellusService();
