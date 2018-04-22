@@ -10,9 +10,10 @@ class MagistellusService {
 
   getPlanetaryDay(date) {
     const self = this;
+    const dayNames = ['Sunday', 'Monday', 'Thursday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const dayNumber = date.getDay();
     const planet = self.planetaryDayService.getPlanetaryDay(dayNumber);
-    return `The classical planet corresponding to today is ${planet}`;
+    return `The classical planet corresponding to ${dayNames[dayNumber]} is ${planet}`;
   }
 
   getPlanetaryHour(date, lat, long) {
